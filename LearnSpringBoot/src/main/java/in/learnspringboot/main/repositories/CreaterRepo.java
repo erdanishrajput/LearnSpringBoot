@@ -11,6 +11,4 @@ public interface CreaterRepo extends JpaRepository<Creater, Long>{
 	
 	public Optional<Creater> getByuniqueNameString(String uniqueName);
 	
-	
-	
 }
