@@ -1,8 +1,12 @@
 package in.learnspringboot.main.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -44,5 +48,22 @@ public class CreaterController {
 		
 		return new ResponseEntity<CreaterResDTO>(createrResData, HttpStatus.OK);
 	}
+	
+	@DeleteMapping("/delete/{uniqueName}")
+	public ResponseEntity<Integer> deleteProfile(@PathVariable String uniqueName) throws Exception {
+		Integer deleted = createrService.deleteCreater(uniqueName);
+		return new ResponseEntity<Integer>(deleted, HttpStatus.OK);
+	}
+	
+	
+	
+//	not working correctly
+	@GetMapping("/search") 
+	public ResponseEntity<List<CreaterResDTO>> searchCreater(@RequestParam(required = false) String uniqueName, @RequestParam(required = false) String email, @RequestParam(required = false) String name) throws Exception{
 
+		List<CreaterResDTO> createrResList = createrService.searchCreaterByUniqueName(uniqueName);
+		
+		return new ResponseEntity<List<CreaterResDTO>>(createrResList, HttpStatus.OK);
+		
+	}
 }

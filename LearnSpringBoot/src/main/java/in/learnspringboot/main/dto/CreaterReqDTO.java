@@ -1,5 +1,8 @@
 package in.learnspringboot.main.dto;
 
+import java.util.List;
+
+import in.learnspringboot.main.Entity.Blogs;
 import lombok.Data;
 
 @Data
@@ -10,4 +13,6 @@ public class CreaterReqDTO {
 	private Long phoneNoLong;
 	private String nicheOfCreaterString;
 	private String passwordString;
+	
+	private List<Blogs> blogs;
 }

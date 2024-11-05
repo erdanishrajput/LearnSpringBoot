@@ -10,22 +10,18 @@ import in.learnspringboot.main.dto.UserResDTO;
 
 @Component
 public class UserTranslater {
-	
+
 	@Autowired
 	private ModelMapper modelMapper;
-	
+
 //	this fun map entity to dto in user
 	public UserResDTO userEntityToDto(User user) {
 		return modelMapper.map(user, UserResDTO.class);
 	}
-	
-	
-	
+
 //	this fun map dto to entity in user
 	public User userDtoToEntity(UserReqDTO userReqDTO) {
 		return modelMapper.map(userReqDTO, User.class);
 	}
-	
-	
 
 }
